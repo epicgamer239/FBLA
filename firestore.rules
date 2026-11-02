@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isReviewer() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && userDoc().role in ['board', 'sponsor'];
+    }
+
+    // Public reads power the home leaderboard / org dashboards (same model as the reference app).
+    // Writes stay locked to the signed-in owner or coordinators.
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if signedIn() && request.auth.uid == userId;
+      allow update, delete: if signedIn() && (request.auth.uid == userId || isReviewer());
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isReviewer();
+    }
+
+    match /groups/{groupId} {
+      allow read: if true;
+      allow write: if isReviewer();
+    }
+
+    match /opportunities/{oppId} {
+      allow read: if true;
+      allow write: if isReviewer();
+    }
+
+    match /submissions/{submissionId} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isReviewer()
+        || (signedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    // Proof images stay private to the volunteer + coordinators
+    match /submissionProofs/{proofId} {
+      allow read: if signedIn()
+        && (resource.data.userId == request.auth.uid || isReviewer());
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isReviewer();
+    }
+
+    match /emailTemplates/{templateId} {
+      allow read, write: if isReviewer();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

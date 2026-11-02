@@ -1,0 +1,14 @@
+{
+  "url": "https://broad-run-key-club.web.app/dashboard",
+  "auth": true,
+  "text": "Key Club\nHome\nInfo\nOpportunities\nSubmit\nMy Hours\nProfile\nWelcome back, Shail\n\nMonday, November 2, 2026\n\nYOUR HOURS\n\n0\n\nGoal: 30 hrs (Junior)\n\n0 / 30 hrs (0%)\n\nIN CLUB\n\n0\n\nOUT OF CLUB (CAP 15)\n\n0\n\nSUMMER (CAP 10)\n\n0\n\nSubmit hours\nMeeting Attendance\nSeptember\nNo date\n\t\nOctober\nNo date\n\t\nNovember\nNo date\n\n\u2014\t\u2014\t\u2014\nAll submissions\nNo submissions yet.",
+  "nav": [
+    "/",
+    "/info",
+    "/opportunities",
+    "/submit",
+    "/dashboard",
+    "/profile"
+  ],
+  "notes": "Member account (no Admin link). Hours widgets + meeting attendance + submissions list."
+}

@@ -1,0 +1,79 @@
+{
+  "account": "member (Shail) \u2014 no Admin nav link",
+  "scraped_at": "2026-11-02",
+  "pages": {
+    "/dashboard": {
+      "auth_required": true,
+      "ui": [
+        "Welcome back, {firstName}",
+        "Your hours total + goal by grade",
+        "In Club / Out of Club (cap) / Summer (cap)",
+        "Submit hours CTA",
+        "Meeting Attendance month grid",
+        "All submissions list"
+      ],
+      "observed": "0 hours, Junior goal 30, caps OOC 15 / summer 10, no submissions, Sep/Oct/Nov meeting slots empty"
+    },
+    "/submit": {
+      "auth_required": true,
+      "gate": "Must be assigned to a small group before form shows",
+      "observed": "Blocked message for unassigned members; contact board to get a group"
+    },
+    "/profile": {
+      "auth_required": true,
+      "sections": [
+        "Email (readonly)",
+        "Small group leader (readonly, Unassigned)",
+        "Phone, First name, Last name, Grade",
+        "Dues Paid (display)",
+        "Save profile",
+        "Change password",
+        "Role Requests: Request Board Member Role, Request Parent Role",
+        "Sign out"
+      ]
+    },
+    "/opportunities": {
+      "auth_required": false,
+      "signed_in_extras": "Same list; member view has no create/edit admin controls",
+      "sections": [
+        "Out of Club Hours Guidelines modal",
+        "Upcoming Opportunities",
+        "Past Opportunities"
+      ],
+      "guidelines_modal": [
+        "Email broadrunkeyclub@gmail.com 24 hours before OOC activity",
+        "Cannot count hours for another club (NHS, Interact, etc.)",
+        "Include: description, logistics, organizer contact, hours, photo confirmation, extras"
+      ]
+    },
+    "/info": {
+      "auth_required": false,
+      "signed_in_extras": "Read-only TipTap content for members (edit UI is reviewer-only)",
+      "sections": [
+        "Hour Requirements",
+        "Hour Opportunities",
+        "How To Submit Hours",
+        "Key Club Pledge",
+        "Rules and Expectations"
+      ]
+    },
+    "/": {
+      "signed_in": "CTA becomes Go to My Hours; nav shows Submit/My Hours/Profile",
+      "sections": [
+        "Club hours goal",
+        "Group leaderboard",
+        "About Key Club"
+      ]
+    }
+  },
+  "not_accessible_on_this_account": [
+    "/admin/dashboard",
+    "/admin/review",
+    "/admin/members",
+    "/admin/groups",
+    "/admin/settings",
+    "/admin/tracking",
+    "/admin/announcements"
+  ],
+  "local_coverage": "All member routes already exist under src/app from the source-map reconstruction."
+}

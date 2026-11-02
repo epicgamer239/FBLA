@@ -1,0 +1,7 @@
+{
+  "url": "https://broad-run-key-club.web.app/submit",
+  "auth": true,
+  "gate": "unassigned small group",
+  "text": "Submit Volunteer Hours\nYou must be assigned to a small group before you can submit volunteer hours...",
+  "notes": "Form hidden until smallGroupId assigned"
+}
